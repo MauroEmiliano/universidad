@@ -41,5 +41,9 @@ public class Usuario {
 		this.email=email;
 		this.fechaNacimiento=fechaNacimiento;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "User: " + user + " email: " + email;
+	}
 }

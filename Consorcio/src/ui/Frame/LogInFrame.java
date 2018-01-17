@@ -21,7 +21,7 @@ import ui.Paneles.PanelPrincipal;
 public class LogInFrame extends JFrame {
 	
 	private JTextField usuarioTF;
-	private JTextField contraseñaPF;
+	private JTextField contrasena;
 	private JButton logBT;
 	private JButton salirBT;
 	private HandlerLogin lhandler;
@@ -43,8 +43,8 @@ public class LogInFrame extends JFrame {
 		usuarioTF = new JTextField(20);
 		createTextfieldRow("Usuario:",usuarioTF,vertical);
 		vertical.add(vertical.createVerticalStrut(50));
-		contraseñaPF = new JPasswordField(15);
-		createTextfieldRow("Contraseña:",contraseñaPF,vertical);
+		contrasena = new JPasswordField(15);
+		createTextfieldRow("Contraseï¿½a:",contrasena,vertical);
 		vertical.add(vertical.createVerticalStrut(50));
 		logBT = new JButton("Ingresar");
 		createButtonsRow(vertical, logBT);
@@ -55,12 +55,12 @@ public class LogInFrame extends JFrame {
 		
 		logBT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(usuarioTF.getText().isEmpty() || contraseñaPF.getText().isEmpty())
+				if(usuarioTF.getText().isEmpty() || contrasena.getText().isEmpty())
 					JOptionPane.showMessageDialog(null,"Por favor complete todos los campos.", "ERROR", JOptionPane.ERROR_MESSAGE);
 				else{
 					Usuario u = new Usuario();
 					u.setUser(usuarioTF.getText());
-					u.setPass(contraseñaPF.getText());
+					u.setPass(contrasena.getText());
 					try {
 						Usuario ulog = new Usuario();
 						ulog = null;
@@ -71,10 +71,10 @@ public class LogInFrame extends JFrame {
 								dispose();
 							}
 							else
-								JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecto.", "ERROR", JOptionPane.ERROR_MESSAGE);
+								JOptionPane.showMessageDialog(null, "Usuario o contraseï¿½a incorrecto.", "ERROR", JOptionPane.ERROR_MESSAGE);
 						}
 						else
-							JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecto.", "ERROR", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Usuario o contraseï¿½a incorrecto.", "ERROR", JOptionPane.ERROR_MESSAGE);
 					} catch (EntidadException e1) {
 						JOptionPane.showMessageDialog(null, e1, "ERROR", JOptionPane.ERROR_MESSAGE);
 					}

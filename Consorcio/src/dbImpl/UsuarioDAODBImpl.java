@@ -40,8 +40,7 @@ public class UsuarioDAODBImpl implements UsuarioDAO{
 	public void altaUsuario(Usuario u) throws EntidadException {
 		Connection c = DBManager.connect();
 		try {
-			PreparedStatement p = c.prepareStatement("INSERT INTO usuarios "
-					+ "VALUES (?,?,?,?)");
+			PreparedStatement p = c.prepareStatement("INSERT INTO usuarios (user, pass, email, fechaNacimiento) VALUES (?,?,?,?)");
 			p.setString(1, u.getUser());
 			p.setString(2, u.getPass());
 			p.setString(3, u.getEmail());
@@ -114,16 +113,20 @@ public class UsuarioDAODBImpl implements UsuarioDAO{
 				u.setFechaNacimiento(rs.getString("fechaNacimiento"));
 				us.add(u);
 			}
-			return us;
+
 		} catch (SQLException e) {
 			try {
 				c.rollback();
-			} catch (SQLException e1) {}  
+			} catch (SQLException e1) {}
+			throw new EntidadException("Hubo un error :)", e);
 		} finally {
 			try {
 				c.close();
-			} catch (SQLException e1) {throw new EntidadException("Hubo un error buscando todas los usuarios", e1);}
-		}return null;
+			} catch (SQLException e1) {
+				throw new EntidadException("Hubo un error buscando todas los usuarios", e1);
+			}
+		}
+		return us;
 	}
 	
 	public Usuario usuarioLogIn(Usuario u) throws EntidadException {
@@ -143,7 +146,7 @@ public class UsuarioDAODBImpl implements UsuarioDAO{
 			try {
 				c.close();
 				c.rollback();
-			} catch (SQLException e1) {throw new EntidadException("Error, usuario o contraseña no coincide", e1);
+			} catch (SQLException e1) {throw new EntidadException("Error, usuario o contraseï¿½a no coincide", e1);
 			}
 		}
 		return ulog;

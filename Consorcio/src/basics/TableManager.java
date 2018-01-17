@@ -31,6 +31,7 @@ public class TableManager {
 		try {
 			Statement s = c.createStatement();
 			s.execute(sql);
+			c.commit();
 		} catch (SQLException e) {
 			try {
 				c.rollback();
@@ -55,6 +56,7 @@ public class TableManager {
 		try {
 			Statement s = c.createStatement();
 			s.execute(sql);
+			c.commit();
 		} catch (SQLException e) {
 			try {
 				c.rollback();

@@ -17,8 +17,8 @@ public class Test {
 			System.out.println(e.getMessage());
 		}*/
 		//Sin login
-		new HandlerDepto();
+		//new HandlerDepto();
 		//Con login
-		//new HandlerLogin();
+		new HandlerLogin();
 	}
 }
